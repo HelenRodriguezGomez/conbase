@@ -166,29 +166,7 @@ fun UserApp(userRepository: UserRepository) {
 
             Spacer(modifier = Modifier.height(12.dp))
 
-            TextField(
-                value = Buscar,
-                onValueChange = { Buscar = it },
-                label = { Text("ID BUSCAR") },
-                modifier = Modifier.size(300.dp, 50.dp)
-            )
-            Spacer(modifier = Modifier.height(12.dp))
 
-            Button(
-                onClick = {
-                    scope.launch {
-                        Listar = withContext(Dispatchers.IO) {
-                            userRepository.buscarId(Buscar.toInt())
-                        }
-                    }
-                },
-                modifier = Modifier.size(200.dp, 50.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF2196F3)) // Botón azul
-            ) {
-                Text(text = "Buscar", color = Color.White)
-            }
-
-            Spacer(modifier = Modifier.height(12.dp))
 
             Listar.forEach { user ->
                 TextField(
